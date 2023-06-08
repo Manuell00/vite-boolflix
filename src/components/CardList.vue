@@ -3,13 +3,15 @@
 import { store } from './../store.js';
 
 // Importo i COMPONENTI
-import SingleCard from './SingleCard.vue'
+import SingleCardFilm from './SingleCardFilm.vue'
+import SingleCardSeries from './SingleCardSeries.vue'
 
 // Inserisco l'EXPORT
 export default {
     name: 'CardList',
     components: {
-        SingleCard,
+        SingleCardFilm,
+        SingleCardSeries,
     },
 
     data() {
@@ -24,8 +26,16 @@ export default {
 <!-- TEMPLATE -->
 <template>
     <section class="container">
+        <h1>Film :</h1>
         <div id="cardList">
-            <SingleCard v-for="character in store.charactersList" :key="character.id" :details="character" />
+            <SingleCardFilm v-for="character in store.charactersListFilm" :key="character.id" :detailsFilm="character" />
+        </div>
+    </section>
+    <section class="container">
+        <h1>Serie :</h1>
+        <div id="cardList">
+            <SingleCardSeries v-for="character in store.charactersListSeries" :key="character.id"
+                :detailsSeries="character" />
         </div>
     </section>
 </template>

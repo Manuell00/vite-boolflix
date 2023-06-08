@@ -29,17 +29,24 @@ export default {
   methods: {
     getCharacters() {
       let myUrl = store.apiURL
+      let myFilm = ""; // Dichiarazione delle variabili
+      let mySeries = "";
 
       if (store.searchText !== "") {
         store.searchText = store.searchText.split(" ").join("+")
-        myUrl += `&query=${store.searchText}`
+        // Film
+        myFilm = `${myUrl}movie?${store.apiKey}&query=${store.searchText}`
+
+        // Serie
+        mySeries = `${myUrl}tv?${store.apiKey}&language=it_IT&query=${store.searchText}`;
       }
 
-      axios.get(myUrl).then(res => {
-        store.charactersList = res.data.results;
+      // PRIMA chiamata axios popolo l'array charactersListFilm
+      axios.get(myFilm).then(res => {
+        store.charactersListFilm = res.data.results;
       })
         .catch(err => {
-          console.log(err);
+          console.error(err);
         })
 
         // Inserisco questo metodo per visualizzare la pagina di loading
@@ -49,6 +56,14 @@ export default {
             store.loading = false;
           }, 100);
         });
+
+      // SECONDA chiamata axios popolo l'array charactersListSeries
+      axios.get(mySeries).then(res => {
+        store.charactersListSeries = res.data.results;
+      })
+        .catch(err => {
+          console.error(err);
+        })
     },
   },
 

@@ -1,14 +1,14 @@
 <script>
 // Importo lo STORE
-import { store } from './../store.js';
+import { store } from '../store.js';
 import CountryFlag from 'vue-country-flag-next'
 
 
 // Inserisco l'EXPORT
 export default {
-    name: 'SingleCard',
+    name: 'SingleCardFilm',
     props: {
-        details: Object
+        detailsFilm: Object
     },
 
     components: {
@@ -34,16 +34,16 @@ export default {
     <!-- Card di esempio -->
     <div class="text-center card mb-3">
         <div class="cardCharacter">
-            <div class="info"><span class="bold">Titolo :</span> {{ details.title }}</div>
-            <div class="info"><span class="bold">Titolo Completo :</span> {{ details.original_title }}</div>
-            <div class="info"><span class="bold">Voto :</span> {{ details.vote_average }}</div>
+            <div class="info"><span class="bold">Titolo :</span> {{ detailsFilm.title }}</div>
+            <div class="info"><span class="bold">Titolo Completo :</span> {{ detailsFilm.original_title }}</div>
+            <div class="info"><span class="bold">Voto :</span> {{ detailsFilm.vote_average }}</div>
             <div class="info">
                 <span class="bold">Lingua :</span>
-                <country-flag v-if="details.original_language === 'en'" :country="'gb-eng'" />
-                <country-flag v-else-if="isLanguageInCountries(details.original_language)"
-                    :country="details.original_language" />
+                <country-flag v-if="detailsFilm.original_language === 'en'" :country="'gb-eng'" />
+                <country-flag v-else-if="isLanguageInCountries(detailsFilm.original_language)"
+                    :country="detailsFilm.original_language" />
                 <template v-else>
-                    {{ details.original_language }}
+                    {{ detailsFilm.original_language }}
                 </template>
             </div>
         </div>
