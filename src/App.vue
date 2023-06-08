@@ -33,7 +33,6 @@ export default {
       let mySeries = "";
 
       if (store.searchText !== "") {
-        store.searchText = store.searchText.split(" ").join("+")
         // Film
         myFilm = `${myUrl}movie?${store.apiKey}&query=${store.searchText}`
 

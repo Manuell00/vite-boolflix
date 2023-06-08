@@ -12,11 +12,6 @@ export default {
         }
     },
 
-    computed: {
-        displaySearchText() {
-            return this.value.replace(/\s/g, "+");
-        }
-    },
 }
 </script>
 
