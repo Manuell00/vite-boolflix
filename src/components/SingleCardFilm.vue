@@ -14,6 +14,13 @@ export default {
     components: {
         CountryFlag
     },
+    computed: {
+        stars() {
+            const vote = this.detailsFilm.vote_average;
+            const roundedVote = Math.ceil(vote / 2); // Converte da scala 1-10 a scala 1-5
+            return Array(roundedVote).fill('');
+        }
+    },
 
     methods: {
         isLanguageInCountries(language) {
@@ -41,7 +48,11 @@ export default {
         <div class="cardCharacter">
             <div class="info"><span class="bold">Titolo :</span> {{ detailsFilm.title }}</div>
             <div class="info"><span class="bold">Titolo Completo :</span> {{ detailsFilm.original_title }}</div>
-            <div class="info"><span class="bold">Voto :</span> {{ detailsFilm.vote_average }}</div>
+            <div class="info"><span class="bold">Voto :</span>
+                <div class="stars">
+                    <i v-for="star in stars" class="fas fa-star"></i>
+                </div>
+            </div>
             <div class="info">
                 <span class="bold">Lingua :</span>
                 <country-flag v-if="detailsFilm.original_language === 'en'" :country="'gb-eng'" />

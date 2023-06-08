@@ -15,10 +15,19 @@ export default {
         CountryFlag
     },
 
+    computed: {
+        stars() {
+            const vote = this.detailsSeries.vote_average;
+            const roundedVote = Math.ceil(vote / 2); // Converte da scala 1-10 a scala 1-5
+            return Array(roundedVote).fill('');
+        }
+    },
+
     methods: {
         isLanguageInCountries(language) {
             return store.countries.includes(language);
         },
+
     },
 
     data() {
@@ -41,7 +50,11 @@ export default {
         <div class="cardCharacter">
             <div class="info"><span class="bold">Titolo :</span> {{ detailsSeries.name }}</div>
             <div class="info"><span class="bold">Titolo Completo :</span> {{ detailsSeries.original_name }}</div>
-            <div class="info"><span class="bold">Voto :</span> {{ detailsSeries.vote_average }}</div>
+            <div class="info"><span class="bold">Voto :</span>
+                <div class="stars">
+                    <i v-for="star in stars" class="fas fa-star"></i>
+                </div>
+            </div>
             <div class="info">
                 <span class="bold">Lingua :</span>
                 <country-flag v-if="detailsSeries.original_language === 'en'" :country="'gb-eng'" />
@@ -64,8 +77,9 @@ export default {
 
 .card {
     flex-basis: calc((100% / 5) - 10px);
-    height: 500px;
+    height: 450px;
     padding: 0;
+    background-color: white;
 
     .image-container {
         width: 100%;
@@ -79,9 +93,9 @@ export default {
     }
 
     .cardCharacter {
-        background-color: $bg-color;
+        background-color: darkgrey;
         text-align: left;
-        height: 250px;
+        height: 200px;
     }
 
     .cardName {
