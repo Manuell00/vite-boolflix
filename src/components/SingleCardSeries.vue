@@ -33,6 +33,11 @@ export default {
 <template>
     <!-- Card di esempio -->
     <div class="text-center card mb-3">
+        <div class="image-container">
+            <img v-if="detailsSeries.backdrop_path"
+                :src="`${store.apiImagesURL}${store.apiImagesSmall}${detailsSeries.backdrop_path}`" alt="">
+            <img v-else src="../../public/noavaibleimage.jpeg" alt="Immagine predefinita">
+        </div>
         <div class="cardCharacter">
             <div class="info"><span class="bold">Titolo :</span> {{ detailsSeries.name }}</div>
             <div class="info"><span class="bold">Titolo Completo :</span> {{ detailsSeries.original_name }}</div>
@@ -49,6 +54,7 @@ export default {
         </div>
     </div>
 </template>
+  
 
 
 
@@ -58,27 +64,38 @@ export default {
 
 .card {
     flex-basis: calc((100% / 5) - 10px);
+    height: 500px;
+    padding: 0;
+
+    .image-container {
+        width: 100%;
+        height: 250px;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
 
     .cardCharacter {
         background-color: $bg-color;
         text-align: left;
+        height: 250px;
+    }
 
-        .cardName {
-            color: white;
-            margin: 10px;
-            text-transform: uppercase;
-            text-align: center;
-            height: 90px;
-
-        }
-
-        .bold {
-            font-weight: 600;
-        }
-
+    .cardName {
+        color: white;
+        margin: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        height: 90px;
 
     }
 
+    .bold {
+        font-weight: 600;
+    }
 
 
 }
