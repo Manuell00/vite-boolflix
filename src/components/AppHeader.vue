@@ -11,6 +11,12 @@ export default {
             store
         }
     },
+
+    computed: {
+        displaySearchText() {
+            return this.value.replace(/\s/g, "+");
+        }
+    },
 }
 </script>
 
@@ -21,7 +27,7 @@ export default {
         <div id="search">
             <!-- Aggancio il v-model al searchText, trim invece taglia gli spazi all'inizioe alla fine -->
             <input class="form-control" type="text" id="search-character" placeholder="Search Film"
-                v-model.trim="store.searchText">
+                v-model.trim="store.searchText" @keyup.enter="$emit('mysearch')">
 
             <!-- Creo un bottone che cerchi nell'API -->
             <div class="col-auto">
