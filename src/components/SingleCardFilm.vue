@@ -18,7 +18,6 @@ export default {
         stars() {
             const vote = this.detailsFilm.vote_average;
             const roundedVote = Math.ceil(vote / 2);
-
             return Array(roundedVote).fill(''); // Crea un array di '' con lunghezza pari al voto arrotondato
         }
     },
