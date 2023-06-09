@@ -18,16 +18,25 @@ export default {
 <!-- TEMPLATE -->
 <template>
     <header>
-        <h1 class="title">
-            <span id="letter1">B</span>
-            <span id="letter2">o</span>
-            <span id="letter3">o</span>
-            <span id="letter4">l</span>
-            <span id="letter5">f</span>
-            <span id="letter6">l</span>
-            <span id="letter7">i</span>
-            <span id="letter8">x</span>
-        </h1>
+        <div class="headeritems">
+            <h1 class="title">
+                <span id="letter1">B</span>
+                <span id="letter2">o</span>
+                <span id="letter3">o</span>
+                <span id="letter4">l</span>
+                <span id="letter5">f</span>
+                <span id="letter6">l</span>
+                <span id="letter7">i</span>
+                <span id="letter8">x</span>
+            </h1>
+            <ol class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">TV Shows</a></li>
+                <li><a href="#">My List</a></li>
+            </ol>
+        </div>
+
         <div id="search">
             <!-- Aggancio il v-model al searchText, trim invece taglia gli spazi all'inizioe alla fine -->
             <input class="form-control" type="text" id="search-character" placeholder="Search Film"
@@ -55,47 +64,82 @@ header {
     justify-content: space-between;
     padding: 10px;
 
-    .title {
-        font-size: 40px;
-        font-weight: 800;
-        text-transform: uppercase;
-        color: $title-color;
-        letter-spacing: 3px;
-        /* Aggiunto spazio tra le lettere */
+    .headeritems {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-direction: row;
+
+
+        .menu {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            font-size: 20px;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 600;
+                    opacity: 0.7;
+                    transition: opacity 0.3s ease;
+
+                    &:hover {
+                        opacity: 1;
+                        text-decoration: underline;
+                        /* Rimuovi questa riga se non vuoi l'effetto di sottolineato */
+                    }
+                }
+            }
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: $title-color;
+            letter-spacing: 3px;
+            /* Aggiunto spazio tra le lettere */
+            display: flex;
+        }
+
+        #letter1 {
+            transform: rotate(-25deg) translateY(15px);
+        }
+
+        #letter2 {
+            transform: rotate(-15deg) translateY(5px);
+        }
+
+        #letter3 {
+            transform: rotate(-8deg) translateY(-3px);
+        }
+
+        #letter4 {
+            transform: rotate(0deg) translateY(-6px);
+        }
+
+        #letter5 {
+            transform: rotate(5deg) translateY(-5px);
+        }
+
+        #letter6 {
+            transform: rotate(10deg) translateY(0px);
+        }
+
+        #letter7 {
+            transform: rotate(15deg) translateY(5px);
+        }
+
+        #letter8 {
+            transform: rotate(25deg) translateY(15px);
+        }
     }
 
-    #letter1 {
-        transform: rotate(-25deg) translateY(15px);
-    }
 
-    #letter2 {
-        transform: rotate(-15deg) translateY(5px);
-    }
-
-    #letter3 {
-        transform: rotate(-8deg) translateY(-3px);
-    }
-
-    #letter4 {
-        transform: rotate(0deg) translateY(-6px);
-    }
-
-    #letter5 {
-        transform: rotate(5deg) translateY(-5px);
-    }
-
-    #letter6 {
-        transform: rotate(10deg) translateY(0px);
-    }
-
-    #letter7 {
-        transform: rotate(15deg) translateY(5px);
-    }
-
-    #letter8 {
-        transform: rotate(25deg) translateY(15px);
-    }
 
     #search {
         display: flex;
