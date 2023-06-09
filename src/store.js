@@ -21,10 +21,5 @@ export const store = reactive({
 
 
     // Dimensioni img
-    apiImagesSmall: "w500/",
-    apiImagesMedium: "w1000/",
-    apiImagesBig: "w1920/",
-
-
-
+    apiImagesSmall: "original/",
 });
