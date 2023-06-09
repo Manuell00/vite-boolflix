@@ -4,8 +4,34 @@
 // Importo Bootstrap
 @import 'node_modules/bootstrap/scss/bootstrap';
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Personalizzazione barra di overflow */
+* {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: linear-gradient(transparent, $title-color);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(transparent, rgb(250, 2, 14));
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(24, 24, 24, 0.3);
+    }
+
+    &::-webkit-scrollbar {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }

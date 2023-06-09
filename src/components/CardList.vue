@@ -25,15 +25,15 @@ export default {
 
 <!-- TEMPLATE -->
 <template>
-    <section class="container">
-        <h1>Film :</h1>
-        <div id="cardList">
+    <section class="containeritem">
+        <h1 class="section-title">FILM :</h1>
+        <div id="cardList" class="card-list">
             <SingleCardFilm v-for="character in store.charactersListFilm" :key="character.id" :detailsFilm="character" />
         </div>
     </section>
-    <section class="container">
-        <h1>Serie :</h1>
-        <div id="cardList">
+    <section class="containeritem">
+        <h1 class="section-title">SERIE :</h1>
+        <div id="cardList" class="card-list">
             <SingleCardSeries v-for="character in store.charactersListSeries" :key="character.id"
                 :detailsSeries="character" />
         </div>
@@ -46,14 +46,25 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/_variables.scss' as *;
 
-.container {
+.containeritem {
     color: white;
-    border: 50px solid white;
+    border: 5px solid rgba(41, 37, 37, 0.48);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 50px;
+    margin: 0 auto;
+    width: 1600px;
 
-    #cardList {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+    .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
     }
 }
 </style>

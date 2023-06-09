@@ -104,5 +104,6 @@ main {
   height: auto;
   min-height: calc(100vh - 100px);
   padding-bottom: 100px;
+
 }
 </style>
