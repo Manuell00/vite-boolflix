@@ -53,7 +53,7 @@ export default {
           store.loading = true
           setTimeout(() => {
             store.loading = false;
-          }, 100);
+          }, 30000);
         });
 
       // SECONDA chiamata axios popolo l'array charactersListSeries

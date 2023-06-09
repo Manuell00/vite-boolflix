@@ -4,18 +4,20 @@ export default {
     name: 'AppLoader',
 }
 </script>
-
 <template>
     <div class="loader">
-        <svg xmlns="http://www.w3.org/2000/svg" view-box="0 0 32 3">
-            <path d="M18 13 L26 2 8 13 14 19 6 30 24 19 Z" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-letter-b" width="100" height="100"
+            viewBox="0 0 24 24" stroke-width="2" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 20v-16h6a4 4 0 0 1 0 8a4 4 0 0 1 0 8h-6" />
+            <line x1="7" y1="12" x2="13" y2="12" />
         </svg>
-        <div class="text">Loading...</div>
+        <div class="text">Boolflix is Loading...</div>
     </div>
 </template>
-
-
-<!-- STYLE -->
+  
+  
+  <!-- STYLE -->
 <style scoped lang="scss">
 @use '../styles/partials/variables' as *;
 
@@ -29,12 +31,12 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-    background: white;
+    background: linear-gradient(to right, #ff8080, #ff1a1a);
 }
 
 svg {
-    fill: red;
-    width: 64px;
+    width: 150px;
+    height: 150px;
     margin: 1rem 0;
     animation: pulse 1s infinite alternate;
 }
@@ -49,11 +51,11 @@ svg {
     }
 }
 
-
-
 .text {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 50px;
+    color: $bg-color;
 }
 </style>
+  
