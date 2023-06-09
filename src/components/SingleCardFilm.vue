@@ -47,7 +47,7 @@ export default {
         <div class="image-container">
             <img v-if="detailsFilm.backdrop_path"
                 :src="`${store.apiImagesURL}${store.apiImagesSmall}${detailsFilm.backdrop_path}`" alt="">
-            <img v-else src="../../public/noavaibleimage.jpeg" alt="Immagine predefinita">
+            <img v-else src="../../public/noavaibleimage.png" alt="Immagine predefinita">
         </div>
 
         <!-- Inserisco le caratteristiche del film -->
@@ -79,7 +79,7 @@ export default {
         </div>
     </div>
 </template>
-  
+
 
 
 
@@ -109,6 +109,7 @@ export default {
 
         img {
             object-fit: cover;
+            object-position: center center;
             height: 100%;
             width: 100%;
             transition: transform 0.8s ease-in-out;

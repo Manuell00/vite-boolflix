@@ -44,7 +44,7 @@ export default {
 
             <!-- Creo un bottone che cerchi nell'API -->
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2" @click.prevent="$emit('mysearch')">Search</button>
+                <button type="submit" class="btn btn-danger mb-2" @click.prevent="$emit('mysearch')">Search</button>
             </div>
 
         </div>

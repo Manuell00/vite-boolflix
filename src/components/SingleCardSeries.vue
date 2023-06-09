@@ -48,7 +48,7 @@ export default {
         <div class="image-container">
             <img v-if="detailsSeries.backdrop_path"
                 :src="`${store.apiImagesURL}${store.apiImagesSmall}${detailsSeries.backdrop_path}`" alt="">
-            <img v-else src="../../public/noavaibleimage.jpeg" alt="Immagine predefinita">
+            <img v-else src="../../public/noavaibleimage.png" alt="Immagine predefinita">
         </div>
         <div class="cardCharacter">
             <div class="info"><span class="bold">Titolo :</span> {{ detailsSeries.name }}</div>
@@ -88,18 +88,27 @@ export default {
 
 .card {
     flex-basis: calc((100% / 5) - 10px);
-    height: 450px;
+    height: 500px;
     padding: 0;
-    background-color: white;
+    border-radius: 10px;
+    background-color: black;
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.03);
+    }
 
     .image-container {
         width: 100%;
-        height: 450px;
+        height: 500px;
         overflow: hidden;
 
         img {
             object-fit: cover;
+            object-position: center;
             height: 100%;
             width: 100%;
             transition: transform 0.8s ease-in-out;
@@ -109,13 +118,13 @@ export default {
     }
 
     .cardCharacter {
-        overflow: scroll;
+        overflow-y: scroll;
         position: absolute;
-        top: 0;
-        left: 0;
-        background-color: darkgrey;
+        top: 0px;
+        right: 0px;
+        background-color: rgba(0, 0, 0, 0.8);
         text-align: left;
-        height: 450px;
+        height: 100%;
         width: 100%;
         padding: 20px;
         box-sizing: border-box;
@@ -125,7 +134,9 @@ export default {
         /* Transizione più lenta */
     }
 
+
     &:hover {
+
         .image-container {
             img {
                 transform: rotateY(180deg) scale(1.2);
@@ -149,7 +160,15 @@ export default {
     }
 
     #overview {
-        font-size: smaller;
+        font-size: 12px;
+    }
+
+    .stars {
+        color: #FDB813;
+
+        i {
+            margin-left: 2px;
+        }
     }
 }
 </style>
