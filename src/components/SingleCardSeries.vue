@@ -18,10 +18,6 @@ export default {
         stars() {
             const vote = this.detailsSeries.vote_average;
             const roundedVote = Math.ceil(vote / 2);
-
-            console.log(roundedVote); // Controlla il valore di roundedVote
-
-
             return Array(roundedVote).fill(''); // Crea un array di '' con lunghezza pari al voto arrotondato
         }
     },
