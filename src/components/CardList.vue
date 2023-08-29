@@ -28,19 +28,20 @@ export default {
 
     methods: {
         nextSlide() {
-            if (this.store.charactersListFilm[this.activeIndex + 1]?.backdrop_path) {
+            if (this.store.charactersListFilm[this.activeIndex + 1]) {
                 this.activeIndex++;
             } else {
                 this.activeIndex = 0;
             }
         },
         prevSlide() {
-            if (this.store.charactersListFilm[this.activeIndex - 1]?.backdrop_path) {
+            if (this.activeIndex > 0) {
                 this.activeIndex--;
             } else {
                 this.activeIndex = this.store.charactersListFilm.length - 1;
             }
         },
+
     },
 }
 </script>
@@ -49,7 +50,7 @@ export default {
 <!-- TEMPLATE -->
 <template>
     <!-- Inserisco il CAROUSEL -->
-    <section v-if="hasValidImages" class="containeritem">
+    <section v-if="hasValidImages" class="containeritem" id="carousel-containeritem">
         <h1 class="section-title">LE NOSTRE PROPOSTE :</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -64,15 +65,17 @@ export default {
                     <img v-if="character.backdrop_path" class="d-block w-100"
                         :src="`${store.apiImagesURL}${store.apiImagesSmall}${character.backdrop_path}`"
                         :alt="`Slide ${index + 1}`">
+                    <div class="slide-number">{{ index + 1 }}</div>
                 </div>
             </div>
+
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"
-                @click="prevSlide">
+                @click.prevent="prevSlide">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </a>
 
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"
-                @click="nextSlide">
+                @click.prevent="nextSlide">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
         </div>
@@ -101,6 +104,21 @@ export default {
 <style scoped lang="scss">
 @use '../styles/general.scss' as *;
 @use '../styles/partials/_variables.scss' as *;
+
+#carousel-containeritem {
+    height: 1000px;
+
+    #carouselExampleIndicators {
+        height: 90%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+        }
+    }
+
+}
 
 .containeritem {
     color: white;
@@ -136,10 +154,26 @@ export default {
     }
 
     .carousel-item {
-        flex: 0 0 100%;
-        /* Imposta la larghezza fissa di un elemento alla larghezza del carousel */
-        transition: opacity 0.3s ease-in-out;
+        position: relative;
+        // ... altri stili ...
+
+        .slide-number {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 18px;
+        }
     }
+
+    .carousel-indicators li::marker {
+        content: "";
+    }
+
+
 
     .carousel-item.active {
         opacity: 1;
@@ -148,7 +182,7 @@ export default {
     .carousel-item img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: scale-down;
     }
 
     .carousel-control-prev,
